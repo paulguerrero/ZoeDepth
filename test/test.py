@@ -15,7 +15,7 @@ def test():
     
     depth = model.infer(input_img)
 
-    save_image((depth/depth.max()).squeeze(dim=0), 'data/sunflower_depth.png')
+    save_image((depth/depth.max()).squeeze(dim=0), 'results/sunflower_depth.png')
 
 def load_image(path: str) -> torch.Tensor:
     img = Image.open(path)

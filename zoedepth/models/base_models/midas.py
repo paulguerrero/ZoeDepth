@@ -27,6 +27,8 @@ import torch.nn as nn
 import numpy as np
 from torchvision.transforms import Normalize
 
+from midas.dpt_depth import DPTDepthModel
+
 
 def denormalize(x):
     """Reverses the imagenet normalization applied to the input.
@@ -340,6 +342,19 @@ class MidasCore(nn.Module):
         print("img_size", img_size)
         midas = torch.hub.load("intel-isl/MiDaS", midas_model_type,
                                pretrained=use_pretrained_midas, force_reload=force_reload)
+        midas = DPTDepthModel(
+            path=None,
+            backbone="beitl16_384",
+            non_negative=True,
+        )
+        checkpoint = (
+            "https://github.com/isl-org/MiDaS/releases/download/v3_1/dpt_beit_large_384.pt"
+        )
+        state_dict = torch.hub.load_state_dict_from_url(
+            checkpoint, map_location=torch.device('cpu'), progress=True, check_hash=True
+        )
+        midas.load_state_dict(state_dict)
+
         kwargs.update({'keep_aspect_ratio': force_keep_ar})
         midas_core = MidasCore(midas, trainable=train_midas, fetch_features=fetch_features,
                                freeze_bn=freeze_bn, img_size=img_size, **kwargs)
