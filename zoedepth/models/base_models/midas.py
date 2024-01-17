@@ -166,7 +166,7 @@ class Resize(object):
             raise ValueError(
                 f"resize_method {self.__resize_method} not implemented")
 
-        return (new_width, new_height)
+        return (new_width.item(), new_height.item())
 
     def __call__(self, x):
         width, height = self.get_size(*x.shape[-2:][::-1])

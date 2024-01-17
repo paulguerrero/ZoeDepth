@@ -1,0 +1,37 @@
+[build-system]
+requires = ["poetry-core>=1.4.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "zoedepth"
+version = "0.1.0"
+description = "ZoeDepth: Combining relative and metric depth"
+documentation = "https://github.com/paulguerrero/ZoeDepth"
+repository = "https://github.com/paulguerrero/ZoeDepth"
+authors = [
+    "Shariq Farooq Bhat",
+    "Reiner Birkl",
+    "Diana Wofk",
+    "Peter Wonka",
+    "Matthias Müller",
+    ]
+
+[tool.poetry.dependencies]
+python = ">=3.9 , <3.11"
+torch = ">=2.0"
+# h5py = ">=3.7.0"
+# hdf5= ">=1.12.2"
+# matplotlib=3.6.2
+# matplotlib-base=3.6.2
+numpy = ">=1.24.1"
+# opencv=4.6.0
+# pip = ">=22.3.1"
+# pytorch-cuda=11.7
+# pytorch-mutex=1.0
+# scipy=1.10.0
+# torchaudio= 0.13.1
+torchvision = ">=0.14.1"
+# huggingface-hub = ">=0.11.1"
+timm = "0.6.12"
+tqdm = ">=4.64.1"
+# wandb = 0.13.9
