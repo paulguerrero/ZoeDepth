@@ -341,7 +341,7 @@ class MidasCore(nn.Module):
         img_size = kwargs.pop("img_size", [384, 384])
         print("img_size", img_size)
         midas = torch.hub.load("intel-isl/MiDaS", midas_model_type,
-                               pretrained=use_pretrained_midas, force_reload=force_reload)
+                               pretrained=use_pretrained_midas, force_reload=force_reload, skip_validation=True)
         midas = DPTDepthModel(
             path=None,
             backbone="beitl16_384",
